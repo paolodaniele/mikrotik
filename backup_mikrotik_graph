@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# You need to change:
+# your_mikrotik_ip = your Mikrotik IP Address
+# etherX = the interface that you want to monitor (ex. ether1)
+# your_backup_folder = the folder where you want to backup
+
+/usr/bin/wget http://your_mikrotik_ip/graphs/iface/etherX/daily.gif
+now="$(date +'%m-%d-%Y')"
+new_name="daily_$now.gif"
+mv daily.gif /your_backup_folder/$new_name
+
+/usr/bin/wget http://your_mikrotik_ip/graphs/iface/etherX/monthly.gif
+now="$(date +'%m-%d-%Y')"
+new_name="monthly_$now.gif"
+mv monthly.gif /your_backup_folder/$new_name
+
+/usr/bin/wget http://your_mikrotik_ip/graphs/iface/etherX/yearly.gif
+now="$(date +'%m-%d-%Y')"
+new_name="yearly_$now.gif"
+mv yearly.gif /your_backup_folder/$new_name
+
